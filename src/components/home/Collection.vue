@@ -10,7 +10,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
         <!-- Categories Section -->
         <template v-if="categories && categories.length > 0">
-          <div
+          <router-link
               v-for="(category, index) in categories"
               :key="index"
               :to="`/collections/${getUrl(category.name)}`"
@@ -33,7 +33,7 @@
             <div class="w-full">
               <CustomButton :value="'Learn More'"/>
             </div>
-          </div>
+          </router-link>
         </template>
 
         <!-- Loading State -->
@@ -87,12 +87,12 @@ export default defineComponent({
     },
   },
   methods: {
-    limitDescription(description) {
+    limitDescription(description :string) {
       return description.length > 50
           ? description.substring(0, 50) + "..."
           : description;
     },
-    getUrl(url) {
+    getUrl(url : string) {
       return url.replace(/\s+/g, "-").toLowerCase();
     },
   },

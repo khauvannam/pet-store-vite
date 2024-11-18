@@ -10,7 +10,7 @@
   </button>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'CustomButton',
   props: {
@@ -43,9 +43,7 @@ export default {
       this.buttonText = this.value; // Reset text
     }
   }
-};
-</script>
+}
 
-<style scoped>
-/* Add any additional styles here */
-</style>
+</script>
+<style scoped></style>

@@ -58,7 +58,7 @@ export default defineComponent({
   },
   methods: {
     handleImageError() {
-      this.productsInList.imageUrl = '/path/to/default-image.jpg'; // Replace with your default image URL
+      this.productsInList.image = '/path/to/default-image.jpg'; // Replace with your default image URL
     },
 
   },

@@ -36,7 +36,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 
 import CustomButton from "../CustomButton.vue";
 

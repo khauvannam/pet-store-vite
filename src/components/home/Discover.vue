@@ -25,7 +25,7 @@
       <!-- Loading placeholders -->
       <template v-else>
         <div
-            v-for="(placeholder, index) in placeholders"
+            v-for="(_, index) in placeholders"
             :key="index"
             role="status"
             class="w-[90%] sm:w-[45%] lg:w-[300px] p-4 border border-gray-200 rounded shadow animate-pulse m-3 dark:border-gray-700"
@@ -83,7 +83,7 @@ export default {
     };
   },
   methods: {
-    getUrl(name) {
+    getUrl(name : string) {
       return name.replace(/\s+/g, "-").toLowerCase();
     },
   },

@@ -84,7 +84,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {ref} from 'vue';
 
 export default {
@@ -95,7 +95,7 @@ export default {
     ]);
     const isSectionVisible = ref(false);
 
-    const toggleSectionVisible = (state) => {
+    const toggleSectionVisible = (state : boolean) => {
       isSectionVisible.value = state;
     };
 
@@ -106,7 +106,7 @@ export default {
     };
   },
   methods: {
-    getUrl(name) {
+    getUrl(name : string) {
       return name.replace(/\s+/g, "-").toLowerCase();
     }
     ,

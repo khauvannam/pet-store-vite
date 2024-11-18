@@ -69,9 +69,9 @@
 
 <script lang="ts">
 
-import CustomButton from "../CustomButton.vue";
 import {PropType} from "vue";
 import {Product} from "../../models/Product.ts";
+import CustomButton from "../CustomButton.vue";
 
 export default {
   name: "BestSeller",
@@ -85,7 +85,7 @@ export default {
     },
   },
   methods: {
-    limitDescription(description) {
+    limitDescription(description: string) {
       return description.length > 50
           ? description.substring(0, 50) + "..."
           : description;

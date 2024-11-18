@@ -22,7 +22,7 @@ export default defineComponent({
   name: 'Categories',
   props: {
     categories: {
-      type: Object as PropType<Category>,
+      type: Object as PropType<Category[]>,
       required: true,
     },
   },

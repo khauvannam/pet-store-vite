@@ -1,51 +1,50 @@
 <script lang="ts">
 import {defineComponent, onMounted, ref, watch} from 'vue';
 import {useRoute} from "vue-router";
-import {Product} from "../models/Product.ts";
 import {getProductsByCategory} from "../services/productService.ts";
-import {Category} from "../models/Category.ts";
 import {getAllCategories} from "../services/categoryService.ts";
 import Categories from "../components/collection/Categories.vue";
 import ProductList from "../components/collection/Products.vue";
+import {Category} from "../models/Category.ts";
+import {Product} from "../models/Product.ts";
 
 export default defineComponent({
   name: "CollectionView",
   components: {ProductList, Categories},
 
   setup() {
-    const route = useRoute(); // Access route parameters
-    const products = ref([]); // Initialize products as an empty array
-    const categories = ref([]); // Initialize categories as an empty array
-    const loading = ref(true); // A loading state to manage async calls
+    const route = useRoute();
+    const products = ref<Product[]>([]);
+    const categories = ref<Category[]>([]);
+    const loading = ref(true);
 
-    const fetchProductByCategory = async (name) => {
+    const fetchProductByCategory = async (name: string) => {
       try {
         products.value = await getProductsByCategory(name);
       } catch (error) {
-        console.error("Error fetching product:", error);
+        console.error("Error fetching products:", error);
       }
     };
 
     const fetchAllCategories = async () => {
       try {
-        categories.value = await getAllCategories(10);
+        categories.value = await getAllCategories(10); // Fetch top 10 categories
         console.log(categories.value);
       } catch (error) {
         console.error("Error fetching categories:", error);
       } finally {
-        loading.value = false; // Stop loading when data is fetched
+        loading.value = false; // Stop loading after fetching categories
       }
     };
 
-    // Watch the route's name parameter for changes
     watch(
         () => route.params.name,
-        (newCategoryName) => {
-          if (newCategoryName) {
+        (newCategoryName: string | undefined | string[]) => {
+          if (typeof newCategoryName === 'string' && newCategoryName) {
             fetchProductByCategory(newCategoryName);
           }
         },
-        {immediate: true} // Run immediately on initialization
+        {immediate: true}
     );
 
     onMounted(() => {
@@ -55,6 +54,7 @@ export default defineComponent({
     return {products, categories, loading};
   },
 });
+
 </script>
 
 <template>

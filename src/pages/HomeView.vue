@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+
 import {onMounted, ref} from 'vue';
 import Slider from '../components/home/Slider.vue';
 import Discover from '../components/home/Discover.vue';
